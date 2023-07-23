@@ -38,14 +38,6 @@ More about me:
 'repo' - my github repository.`;
 };
 
-// Donate
-export const donate = async (args: string[]): Promise<string> => {
-  return `thank you for your interest. 
-here are the ways you can support my work:
-- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.donate_urls.paypal}" target="_blank">paypal</a></u>
-`;
-};
-
 // Contact
 export const email = async (args: string[]): Promise<string> => {
   window.open(`mailto:${config.email}`);
@@ -79,15 +71,6 @@ export const echo = async (args: string[]): Promise<string> => {
 
 export const whoami = async (args: string[]): Promise<string> => {
   return `${config.ps1_username}`;
-};
-
-export const ls = async (args: string[]): Promise<string> => {
-  return `As a Live Terminal emulator, I cannot list files.`;
-};
-
-export const cd = async (args: string[]): Promise<string> => {
-  return `unfortunately, i cannot afford more directories.
-if you want to help, you can type 'donate'.`;
 };
 
 export const date = async (args: string[]): Promise<string> => {
