@@ -12,7 +12,7 @@ cd LiveTerm
 echo "LiveTerm cloned! Installing dependencies..."
 
 if command -v yarn >/dev/null 2>&1 ; then
-git checkout main -- yarn.lock    
+  git checkout main -- yarn.lock    
   yarn install
 else
   cat 1>&2 << 'EOA'
