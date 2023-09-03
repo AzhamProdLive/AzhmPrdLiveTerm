@@ -17,15 +17,6 @@
     "kofi": "ko-fi.com/azhammakestrash"
   },
     "Nord": {
-      "light": {
-        "background": "#2E3440",
-        "foreground": "#E5E9F0",
-        "yellow": "#5E81AC",
-        "green": "#A3BE8C",
-        "gray": "#88C0D0",
-        "blue": "#EBCB8B",
-        "red": "#BF616A"
-      },
       "dark": {
         "background": "#2E3440",
         "foreground": "#E5E9F0",
@@ -34,6 +25,6 @@
         "gray": "#88C0D0",
         "blue": "#EBCB8B",
         "red": "#BF616A"
-    }
+    },
   }
 }
