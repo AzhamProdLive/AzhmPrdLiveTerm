@@ -16,7 +16,7 @@
     "paypal": "https://paypal.me/azhammakestrash",
     "kofi": "ko-fi.com/azhammakestrash"
   },
-    "Nord": {
+    "colors": {
       "dark": {
         "background": "#2E3440",
         "foreground": "#E5E9F0",
