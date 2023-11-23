@@ -78,7 +78,7 @@ export const date = async (args: string[]): Promise<string> => {
 };
 
 export const mkdir = async (args: string[]): Promise<string> => {
-  return "You can't create the folder" args.join() "as this terminal is not a real terminal!"
+  return "You can't create the folder `${args.join()}` as this terminal is not a real terminal!"
 };
 
 // Banner
