@@ -33,4 +33,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 .gitattributes
-.idea
+/.idea
