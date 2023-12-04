@@ -78,13 +78,11 @@ export const date = async (args: string[]): Promise<string> => {
 };
 
 export const mkdir = async (args: string[]): Promise<string> => {
-  if (args.length > 1) {
+  if (args.length === 1) {
     return `You can't create the folder ${args.join(' ')} as this terminal is not a real terminal !`;
-  } else if (args.length === 0) {
-    return `You can't create a folder here, as this terminal is not a real terminal !`;
   }
   else {
-    return `Error : Checkup needed on code`;
+        return `You can't create a folder here, as this terminal is not a real terminal !`;
   }
 };
 
