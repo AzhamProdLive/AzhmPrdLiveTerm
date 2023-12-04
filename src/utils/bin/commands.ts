@@ -83,6 +83,9 @@ export const mkdir = async (args: string[]): Promise<string> => {
   } else if (args.length === 0) {
     return `You can't create a folder here, as this terminal is not a real terminal !`;
   }
+  else {
+    return `Error : Checkup needed on code`;
+  }
 };
 
 
