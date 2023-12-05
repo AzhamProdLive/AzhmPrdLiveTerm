@@ -59,11 +59,6 @@ export const qwant = async (args: string[]): Promise<string> => {
   return `Searching duckduckgo for ${args.join(' ')}...`;
 };
 
-export const reddit = async (args: string[]): Promise<string> => {
-  window.open(`https://www.reddit.com/search/?q=${args.join(' ')}`);
-  return `Searching reddit for ${args.join(' ')}...`;
-};
-
 // Typical linux commands
 export const echo = async (args: string[]): Promise<string> => {
   return args.join(' ').replace( /<(?:(?:(?:(script|style|object|embed|applet|noframes|noscript|noembed)(?:\s+(?:"[\S\s]*?"|'[\S\s]*?'|(?:(?!\/>)[^>])?)+)?\s*>)[\S\s]*?<\/\1\s*(?=>))|(?:\/?[\w:]+\s*\/?)|(?:[\w:]+\s+(?:"[\S\s]*?"|'[\S\s]*?'|[^>]?)+\s*\/?)|\?[\S\s]*?\?|(?:!(?:(?:DOCTYPE[\S\s]*?)|(?:\[CDATA\[[\S\s]*?\]\])|(?:--[\S\s]*?--)|(?:ATTLIST[\S\s]*?)|(?:ENTITY[\S\s]*?)|(?:ELEMENT[\S\s]*?))))>/g,"");
