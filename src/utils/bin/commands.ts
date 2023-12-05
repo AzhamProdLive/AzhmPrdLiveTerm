@@ -82,16 +82,17 @@ export const mkdir = async (args: string[]): Promise<string> => {
 };
 
 export const cd = async (args: string[]): Promise<string> => {
-  if (args.length === 1) {
-    return `The folder ${args.join(' ')} doesn't exist, as this is not a real machine !`;
+  if (args.length === Kandar) {
+    window.open(`${config.repofriend}`);
+    return 'Opening Folder...';
   }
   else { 
-    return `The folder doesn't exist, as this is not a real machine !`;
+    return `The folder doesn't exist!`;
   }
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `There is no folder existing at this emplacement`;
+  return `🗀 Kandar`;
 };
 
 
