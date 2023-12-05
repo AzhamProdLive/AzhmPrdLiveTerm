@@ -20,7 +20,6 @@ const sumfetch = async (args: string[]): Promise<string> => {
             ▀▓▓▓▓▓▓▓▓▓▓▓▀▀                   <u><a href="${config.donate_urls.kofi}" target="_blank">${config.donate_urls.kofi}</a></u>
 
 `;
-  }
 };
 
 export default sumfetch;
