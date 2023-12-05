@@ -82,19 +82,18 @@ export const mkdir = async (args: string[]): Promise<string> => {
 };
 
 export const cd = async (args: string[]): Promise<string> => {
-  if (args.length === 1) {
-    const folderName = args[0];
-    switch (folderName) { 
+  if (args.length === 0) {
+    return `Invalid number of arguments! Usage: cd <folder>`;
+  }
+      const folderName = args[0];
+   switch (folderName) { 
       case "Kandar": 
         const message = 'Opening Kandar Folder...'
         window.open(`${config.repofriend}`);
         return message;
       // Need to modify with case args to add more folders
       default:
-        return `The folder $(folderName) doesn't exist!`
-  }
-  } else { 
-    return `The folder doesn't exist!`;
+        return `The folder ${folderName} doesn't exist!`
   }
 };
 
