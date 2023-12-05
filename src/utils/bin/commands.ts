@@ -85,7 +85,7 @@ export const cd = async (args: string[]): Promise<string> => {
   if (args.length === 0) {
     return `Invalid number of arguments! Usage: cd <folder>`;
   }
-      const folderName = args[0],toLowerCase();
+      const folderName = args[0].toLowerCase();
    switch (folderName) { 
       case "Kandar": 
         const message = 'Opening Kandar Folder...'
