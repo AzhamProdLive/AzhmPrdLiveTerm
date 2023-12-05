@@ -82,7 +82,7 @@ export const mkdir = async (args: string[]): Promise<string> => {
 };
 
 export const cd = async (args: string[]): Promise<string> => {
-  if (args.length === Kandar) {
+  if (args.length === 1 && args[0] === "Kandar") {
     window.open(`${config.repofriend}`);
     return 'Opening Folder...';
   }
