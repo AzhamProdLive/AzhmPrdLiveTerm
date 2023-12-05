@@ -86,8 +86,9 @@ export const cd = async (args: string[]): Promise<string> => {
     const folderName = args[0];
     switch (folderName) { 
       case "Kandar": 
+        const message = 'Opening Kandar Folder...'
         window.open(`${config.repofriend}`);
-        return 'Opening Kandar Folder...';
+        return message;
       // Need to modify with case args to add more folders
       default:
         return `The folder $(folderName) doesn't exist!`
