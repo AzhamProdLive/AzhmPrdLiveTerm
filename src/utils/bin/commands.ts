@@ -81,6 +81,19 @@ export const mkdir = async (args: string[]): Promise<string> => {
   }
 };
 
+export const cd = async (args: string[]): Promise<string> => {
+  if (args.length === 1) {
+    return `The folder ${args.join(' ')} doesn't exist, as this is not a real machine !`;
+  }
+  else { 
+    return `The folder doesn't exist, as this is not a real machine !`;
+  }
+};
+
+export const ls = async (args: string[]): Promise<string> => {
+  return `There is no folder existing at this emplacement`;
+};
+
 
 
 
