@@ -87,10 +87,15 @@ export const cd = async (args: string[]): Promise<string> => {
   }
       const folderName = args[0];
    switch (folderName) { 
-      case "Kandar": 
-        const message = 'Opening Kandar Folder...'
+      case "Kandar":
         window.open(`${config.repofriend}`);
-        return message;
+        return 'Opening Kandar Folder...';
+      case "Dotfiles":
+        window.open(`${config.repodotfiles}`);
+        return 'Opening Dotfiles Folder...';
+      case "UsefulBox":
+        window.open(`${config.repobox}`);
+        return 'Opening UsefulBox Folder...';
       // Need to modify with case args to add more folders
       default:
         return `The folder ${folderName} doesn't exist!`
@@ -98,7 +103,7 @@ export const cd = async (args: string[]): Promise<string> => {
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `🗀 Kandar`;
+  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox`;
 };
 
 
