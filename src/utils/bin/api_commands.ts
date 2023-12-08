@@ -13,7 +13,6 @@ export const projects = async (args: string[]): Promise<string> => {
         `${repo.name} - <a class="text-light-blue dark:text-dark-blue underline" href="${repo.html_url}" target="_blank">${repo.html_url}</a>`,
     )
     .join('\n');
-    return `There is the list of all the public projects I have on Github:\n${projects}`;
 };
 
 export const quote = async (args: string[]): Promise<string> => {
