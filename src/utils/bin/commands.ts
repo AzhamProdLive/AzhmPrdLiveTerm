@@ -83,7 +83,7 @@ export const mkdir = async (args: string[]): Promise<string> => {
 
 export const cd = async (args: string[]): Promise<string> => {
   if (args.length === 0) {
-    return `Invalid number of arguments! Usage: cd <folder>`;
+    return `Invalid number of arguments! Usage: cd [folder]`;
   }
       const folderName = args[0];
    switch (folderName) { 
