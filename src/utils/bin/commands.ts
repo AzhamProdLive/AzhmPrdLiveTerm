@@ -88,13 +88,13 @@ export const cd = async (args: string[]): Promise<string> => {
       const folderName = args[0];
    switch (folderName) { 
       case "Kandar":
-        window.open(`${config.repofriend}`);
+        window.open(`${config.repolinks.repofriend}`);
         return 'Opening Kandar Folder...';
       case "Dotfiles":
-        window.open(`${config.repodotfiles}`);
+        window.open(`${config.repolinks.repodotfiles}`);
         return 'Opening Dotfiles Folder...';
       case "UsefulBox":
-        window.open(`${config.repobox}`);
+        window.open(`${config.repolinks.repobox}`);
         return 'Opening UsefulBox Folder...';
       // Need to modify with case args to add more folders
       default:
