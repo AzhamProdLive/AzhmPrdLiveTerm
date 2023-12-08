@@ -24,7 +24,7 @@ Type 'sumfetch' to display summary.
 
 // Redirection
 export const repo = async (args: string[]): Promise<string> => {
-  window.open(`${config.repo}`);
+  window.open(`${config.repolinks.repo}`);
   return 'Opening Github repository...';
 };
 
