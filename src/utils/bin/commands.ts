@@ -112,19 +112,21 @@ export const ls = async (args: string[]): Promise<string> => {
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
-    { name: 'sda', majmin: '8:0', rm: '0', size: '931.5G', ro: '0', type: 'disk', mountpoint: null, children: [] },
-        { name: 'sda1', majmin: '8:1', rm: '0', size: '931.5G', ro: '0', type: 'part', mountpoint: null, children: [] },
-    { name: 'nvme0n1', majmin: '259:0', rm: '0', size: '931.5G', ro: '0', type: 'disk', mountpoint: null, children: [
-        { name: 'nvme0n1p1', majmin: '259:1', rm: '0', size: '16M', ro: '0', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme0n1p4', majmin: '259:2', rm: '0', size: '931.5G', ro: '0', type: 'part', mountpoint: null, children: [] },
+    { name: 'sda', size: '931.5G', type: 'disk', mountpoint: null, children: [
+        { name: 'sda1', size: '931.5G', type: 'part', mountpoint: null, children: [] },
       ]
     },
-    { name: 'nvme1n1', majmin: '259:3', rm: '0', size: '476.9G', ro: '0', type: 'disk', mountpoint: null, children: [
-        { name: 'nvme1n1p1', majmin: '259:4', rm: '0', size: '260M', ro: '0', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p2', majmin: '259:5', rm: '0', size: '16M', ro: '0', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p3', majmin: '259:6', rm: '0', size: '117.2G', ro: '0', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p5', majmin: '259:7', rm: '0', size: '358.3G', ro: '0', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p6', majmin: '259:8', rm: '0', size: '1024M', ro: '0', type: 'part', mountpoint: null, children: [] },
+    { name: 'nvme0n1', size: '931.5G', type: 'disk', mountpoint: null, children: [
+        { name: 'nvme0n1p1', size: '16M', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme0n1p4', size: '931.5G', type: 'part', mountpoint: null, children: [] },
+      ]
+    },
+    { name: 'nvme1n1', size: '476.9G', type: 'disk', mountpoint: null, children: [
+        { name: 'nvme1n1p1', size: '260M', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p2', size: '16M', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p3', size: '117.2G', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p5', size: '358.3G', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p6', size: '1024M', type: 'part', mountpoint: null, children: [] },
       ]
     },
     // Add more devices as needed
@@ -133,7 +135,7 @@ export const lsblk = async (args: string[]): Promise<string> => {
   // Helper function to recursively build the tree-like output
   const buildTree = (device: any, indent: number): string => {
     const prefix = ' '.repeat(indent * 2);
-    let result = `${prefix}${device.name.padEnd(10)}${device.majmin.padEnd(8)}${device.rm.padEnd(3)}${device.size.padEnd(8)}${device.ro.padEnd(3)}${device.type.padEnd(5)}${device.mountpoint || ''}\n`;
+    let result = `${prefix}${device.name.padEnd(10)}${device.size.padEnd(8)}${device.type.padEnd(5)}${device.mountpoint || ''}\n`;
 
     for (const child of device.children) {
       result += buildTree(child, indent + 1);
