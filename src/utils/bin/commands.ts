@@ -22,12 +22,6 @@ Type 'sumfetch' to display summary.
 `;
 };
 
-// Redirection
-export const repo = async (args: string[]): Promise<string> => {
-  window.open(`${config.repolinks.repo}`);
-  return 'Opening Github repository...';
-};
-
 // About
 export const about = async (args: string[]): Promise<string> => {
   return `Hi, I am ${config.name}. 
@@ -35,7 +29,7 @@ Welcome to my website!
 More about me:
 'sumfetch' - short summary.
 'readme' - my github readme.
-'repo' - my github repository.`;
+'cd repo' - my github repository.`;
 };
 
 // Contact
@@ -95,7 +89,10 @@ export const cd = async (args: string[]): Promise<string> => {
         return 'Opening Dotfiles Folder...';
       case "UsefulBox":
         window.open(`${config.repolinks.repobox}`);
-        return 'Opening UsefulBox Folder...';
+        return 'Opening Useful Box Folder...';
+      case "repo":
+        window.open(`${config.repolinks.repo}`);
+        return 'Opening Github repository...';
       // Need to modify with case args to add more folders
       default:
         return `The folder ${folderName} doesn't exist!`
@@ -103,9 +100,26 @@ export const cd = async (args: string[]): Promise<string> => {
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox`;
+  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`;
 };
 
+export const lsblk = async (args: string[]): Promise<string> => {
+  // Mocked block device information
+  const blockDevices = [
+    { name: 'sda', size: '256G', type: 'disk', mountpoint: '/mnt/sda1' },
+    { name: 'sdb', size: '1T', type: 'disk', mountpoint: null },
+    { name: 'sdb1', size: '512M', type: 'part', mountpoint: '/boot' },
+    { name: 'sdb2', size: '512G', type: 'part', mountpoint: '/' },
+    // Add more devices as needed
+  ];
+
+  // Format the output to resemble the lsblk command
+  const output = blockDevices.map(device => {
+    return `${device.name} ${device.size} ${device.type} ${device.mountpoint || ''}`;
+  }).join('\n');
+
+  return output;
+};
 
 
 
