@@ -106,21 +106,19 @@ export const cd = async (args: string[]): Promise<string> => {
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  const folders = Object.keys(config.repolinks).map(folder => `🗀 ${folder}`);
-  return folders.join('\n');
+  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`;
 };
-
 
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
-    { name: 'sda', size: '931.5G', type: 'disk', mountpoint: null, children: [
-        { name: 'sda1', size: '931.5G', type: 'part', mountpoint: null, children: [] },
+    { name: 'sda', size: '931.5G', type: 'disk', mountpoint: '/dev/azhmprdliveterm', children: [
+        { name: 'sda1', size: '931.5G', type: 'part', mountpoint: '/repos', children: [] },
       ]
     },
-    { name: 'nvme0n1', size: '931.5G', type: 'disk', mountpoint: null, children: [
-        { name: 'nvme0n1p1', size: '16M', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme0n1p4', size: '931.5G', type: 'part', mountpoint: null, children: [] },
+    { name: 'nvme0n1', size: '931.5G', type: 'disk', mountpoint: '/', children: [
+        { name: 'nvme0n1p1', size: '16M', type: 'part', mountpoint: '/boot/efi', children: [] },
+        { name: 'nvme0n1p4', size: '931.5G', type: 'part', mountpoint: '/dev/ArchLinux', children: [] },
       ]
     },
   ];
