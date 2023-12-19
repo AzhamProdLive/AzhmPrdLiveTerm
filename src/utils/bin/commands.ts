@@ -29,7 +29,13 @@ Welcome to my website!
 More about me:
 'sumfetch' - short summary.
 'readme' - my github readme.
-'cd repo' - my github repository.`;
+'repo' - my github repository.`;
+};
+
+// Redirection
+export const repo = async (args: string[]): Promise<string> => {
+  window.open(`${config.repolinks.repo}`);
+  return 'Opening Github repository...';
 };
 
 // Contact
