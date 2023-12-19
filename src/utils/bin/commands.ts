@@ -112,20 +112,42 @@ export const ls = async (args: string[]): Promise<string> => {
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
-    { name: 'sda', size: '256G', type: 'disk', mountpoint: '/mnt/sda1' },
-    { name: 'sdb', size: '1T', type: 'disk', mountpoint: null },
-    { name: 'sdb1', size: '512M', type: 'part', mountpoint: '/boot' },
-    { name: 'sdb2', size: '512G', type: 'part', mountpoint: '/' },
+    { name: 'sda', majmin: '8:0', rm: '0', size: '931.5G', ro: '0', type: 'disk', mountpoint: null, children: [] },
+        { name: 'sda1', majmin: '8:1', rm: '0', size: '931.5G', ro: '0', type: 'part', mountpoint: null, children: [] },
+    { name: 'nvme0n1', majmin: '259:0', rm: '0', size: '931.5G', ro: '0', type: 'disk', mountpoint: null, children: [
+        { name: 'nvme0n1p1', majmin: '259:1', rm: '0', size: '16M', ro: '0', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme0n1p4', majmin: '259:2', rm: '0', size: '931.5G', ro: '0', type: 'part', mountpoint: null, children: [] },
+      ]
+    },
+    { name: 'nvme1n1', majmin: '259:3', rm: '0', size: '476.9G', ro: '0', type: 'disk', mountpoint: null, children: [
+        { name: 'nvme1n1p1', majmin: '259:4', rm: '0', size: '260M', ro: '0', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p2', majmin: '259:5', rm: '0', size: '16M', ro: '0', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p3', majmin: '259:6', rm: '0', size: '117.2G', ro: '0', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p5', majmin: '259:7', rm: '0', size: '358.3G', ro: '0', type: 'part', mountpoint: null, children: [] },
+        { name: 'nvme1n1p6', majmin: '259:8', rm: '0', size: '1024M', ro: '0', type: 'part', mountpoint: null, children: [] },
+      ]
+    },
     // Add more devices as needed
   ];
 
-  // Format the output to resemble the lsblk command
-  const output = blockDevices.map(device => {
-    return `${device.name} ${device.size} ${device.type} ${device.mountpoint || ''}`;
-  }).join('\n');
+  // Helper function to recursively build the tree-like output
+  const buildTree = (device: any, indent: number): string => {
+    const prefix = ' '.repeat(indent * 2);
+    let result = `${prefix}${device.name.padEnd(10)}${device.majmin.padEnd(8)}${device.rm.padEnd(3)}${device.size.padEnd(8)}${device.ro.padEnd(3)}${device.type.padEnd(5)}${device.mountpoint || ''}\n`;
+
+    for (const child of device.children) {
+      result += buildTree(child, indent + 1);
+    }
+
+    return result;
+  };
+
+  // Format the output as a tree
+  const output = buildTree({ name: 'root', children: blockDevices }, 0).trim();
 
   return output;
 };
+
 
 
 
