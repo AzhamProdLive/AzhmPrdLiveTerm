@@ -109,7 +109,7 @@ export const ls = async (args: string[]): Promise<string> => {
   return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`;
 };
 
-export const lsblk = async (args: string[]): Promise<string> => {
+/*export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
     { name: 'sda', size: '931.5G', type: 'disk', mountpoint: '/dev/azhmprdliveterm', children: [
@@ -139,7 +139,7 @@ export const lsblk = async (args: string[]): Promise<string> => {
   const output = buildTree({ name: 'root', children: blockDevices }, 0).trim();
 
   return output;
-};
+};*/
 
 
 
