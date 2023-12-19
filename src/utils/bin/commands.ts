@@ -106,8 +106,10 @@ export const cd = async (args: string[]): Promise<string> => {
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`;
+  const folders = Object.keys(config.repolinks).map(folder => `🗀 ${folder}`);
+  return folders.join('\n');
 };
+
 
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
@@ -121,15 +123,6 @@ export const lsblk = async (args: string[]): Promise<string> => {
         { name: 'nvme0n1p4', size: '931.5G', type: 'part', mountpoint: null, children: [] },
       ]
     },
-    { name: 'nvme1n1', size: '476.9G', type: 'disk', mountpoint: null, children: [
-        { name: 'nvme1n1p1', size: '260M', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p2', size: '16M', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p3', size: '117.2G', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p5', size: '358.3G', type: 'part', mountpoint: null, children: [] },
-        { name: 'nvme1n1p6', size: '1024M', type: 'part', mountpoint: null, children: [] },
-      ]
-    },
-    // Add more devices as needed
   ];
 
   // Helper function to recursively build the tree-like output
