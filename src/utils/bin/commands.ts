@@ -61,7 +61,12 @@ export const qwant = async (args: string[]): Promise<string> => {
 
 // Typical linux commands
 export const echo = async (args: string[]): Promise<string> => {
-  return args.join(' ').replace( /<(?:(?:(?:(script|style|object|embed|applet|noframes|noscript|noembed)(?:\s+(?:"[\S\s]*?"|'[\S\s]*?'|(?:(?!\/>)[^>])?)+)?\s*>)[\S\s]*?<\/\1\s*(?=>))|(?:\/?[\w:]+\s*\/?)|(?:[\w:]+\s+(?:"[\S\s]*?"|'[\S\s]*?'|[^>]?)+\s*\/?)|\?[\S\s]*?\?|(?:!(?:(?:DOCTYPE[\S\s]*?)|(?:\[CDATA\[[\S\s]*?\]\])|(?:--[\S\s]*?--)|(?:ATTLIST[\S\s]*?)|(?:ENTITY[\S\s]*?)|(?:ELEMENT[\S\s]*?))))>/g,"");
+  return args
+    .join(' ')
+    .replace(
+      /<(?:(?:(?:(script|style|object|embed|applet|noframes|noscript|noembed)(?:\s+(?:"[\S\s]*?"|'[\S\s]*?'|(?:(?!\/>)[^>])?)+)?\s*>)[\S\s]*?<\/\1\s*(?=>))|(?:\/?[\w:]+\s*\/?)|(?:[\w:]+\s+(?:"[\S\s]*?"|'[\S\s]*?'|[^>]?)+\s*\/?)|\?[\S\s]*?\?|(?:!(?:(?:DOCTYPE[\S\s]*?)|(?:\[CDATA\[[\S\s]*?\]\])|(?:--[\S\s]*?--)|(?:ATTLIST[\S\s]*?)|(?:ENTITY[\S\s]*?)|(?:ELEMENT[\S\s]*?))))>/g,
+      '',
+    );
 };
 
 export const whoami = async (args: string[]): Promise<string> => {
@@ -74,10 +79,11 @@ export const date = async (args: string[]): Promise<string> => {
 
 export const mkdir = async (args: string[]): Promise<string> => {
   if (args.length >= 1) {
-    return `You can't create the folder ${args.join(' ')} as this terminal is not a real terminal !`;
-  }
-  else {
-        return `You can't create a folder here, as this terminal is not a real terminal !`;
+    return `You can't create the folder ${args.join(
+      ' ',
+    )} as this terminal is not a real terminal !`;
+  } else {
+    return `You can't create a folder here, as this terminal is not a real terminal !`;
   }
 };
 
@@ -85,64 +91,76 @@ export const cd = async (args: string[]): Promise<string> => {
   if (args.length === 0) {
     return `Invalid number of arguments! Usage: cd [folder]`;
   }
-      const folderName = args[0];
-   switch (folderName) { 
-      case "Kandar":
-        window.open(`${config.repolinks.repofriend}`);
-        return 'Opening Kandar Folder...';
-      case "Dotfiles":
-        window.open(`${config.repolinks.repodotfiles}`);
-        return 'Opening Dotfiles Folder...';
-      case "UsefulBox":
-        window.open(`${config.repolinks.repobox}`);
-        return 'Opening Useful Box Folder...';
-      case "repo":
-        window.open(`${config.repolinks.repo}`);
-        return 'Opening Github repository...';
-      // Need to modify with case args to add more folders
-      default:
-        return `The folder ${folderName} doesn't exist!`
+  const folderName = args[0];
+  switch (folderName) {
+    case 'Kandar':
+      window.open(`${config.repolinks.repofriend}`);
+      return 'Opening Kandar Folder...';
+    case 'Dotfiles':
+      window.open(`${config.repolinks.repodotfiles}`);
+      return 'Opening Dotfiles Folder...';
+    case 'UsefulBox':
+      window.open(`${config.repolinks.repobox}`);
+      return 'Opening Useful Box Folder...';
+    case 'repo':
+      window.open(`${config.repolinks.repo}`);
+      return 'Opening Github repository...';
+    // Need to modify with case args to add more folders
+    default:
+      return `The folder ${folderName} doesn't exist!`;
   }
 };
 
 export const ls = async (args: string[]): Promise<string> => {
-  return `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`;
+  return (
+    `🗀 Kandar` + '\n' + `🗀 Dotfiles` + '\n' + `🗀 UsefulBox` + '\n' + `🗀 repo`
+  );
 };
 
-/*export const lsblk = async (args: string[]): Promise<string> => {
+export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
-    { name: 'sda', size: '931.5G', type: 'disk', mountpoint: '/dev/azhmprdliveterm', children: [
-        { name: 'sda1', size: '931.5G', type: 'part', mountpoint: '/repos', children: [] },
-      ]
+    {
+      name: 'Seagate Samsung SATA HDD',
+      size: '1TB',
+      mountpoint: null,
+      children: [],
     },
-    { name: 'nvme0n1', size: '931.5G', type: 'disk', mountpoint: '/', children: [
-        { name: 'nvme0n1p1', size: '16M', type: 'part', mountpoint: '/boot/efi', children: [] },
-        { name: 'nvme0n1p4', size: '931.5G', type: 'part', mountpoint: '/dev/ArchLinux', children: [] },
-      ]
+    {
+      name: 'Samsung NVMe SSD 980',
+      size: '1TB',
+      mountpoint: null,
+      children: [],
+    },
+    {
+      name: 'Unnamed Samsung SSD Drive',
+      size: '500GB',
+      mountpoint: null,
+      children: [],
     },
   ];
 
-  // Helper function to recursively build the tree-like output
-  const buildTree = (device: any, indent: number): string => {
-    const prefix = ' '.repeat(indent * 2);
-    let result = `${prefix}${device.name.padEnd(10)}${device.size.padEnd(8)}${device.type.padEnd(5)}${device.mountpoint || ''}\n`;
+  // Helper function to recursively build the lsblk-like output
+  const buildOutput = (device: any, depth: number): string => {
+    const prefix = ' '.repeat(depth * 2);
+    let output = `${prefix}${device.name.padEnd(30)}${device.size.padEnd(8)}${
+      device.mountpoint || ''
+    }\n`;
 
     for (const child of device.children) {
-      result += buildTree(child, indent + 1);
+      output += buildOutput(child, depth + 1);
     }
 
-    return result;
+    return output;
   };
 
-  // Format the output as a tree
-  const output = buildTree({ name: 'root', children: blockDevices }, 0).trim();
+  // Format the output with "Available disks:" line
+  const output = `Available disks:\n${blockDevices
+    .map((device) => buildOutput(device, 0))
+    .join('')}`;
 
   return output;
-};*/
-
-
-
+};
 
 // Banner
 export const banner = (args?: string[]): string => {
