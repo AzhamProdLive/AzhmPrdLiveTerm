@@ -117,6 +117,14 @@ export const ls = async (args: string[]): Promise<string> => {
   );
 };
 
+export const sudo = async (args: string[]): Promise<string> => {
+  return `You don't have permission to run sudo! ... Oh, wait, you're not even on a real terminal!`;
+};
+
+export const su = async (args: string[]): Promise<string> => {
+  return `You can't become a Super User! ... Oh, wait, you just have no permissions at all, as this isn't a real terminal.`;
+};
+
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
