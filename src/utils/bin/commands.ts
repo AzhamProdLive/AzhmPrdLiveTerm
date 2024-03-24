@@ -125,6 +125,20 @@ export const su = async (args: string[]): Promise<string> => {
   return `You can't become a Super User! ... Oh, wait, you just have no permissions at all, as this isn't a real terminal.`;
 };
 
+export const saygex = async (args: string[]): Promise<string> => {
+  const randomNumber = Math.floor(Math.random() * 6) + 1; // Generates a random number between 1 and 6
+
+  if (randomNumber === 1) {
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ'); // Replace with your YouTube link
+    return 'Rolling a number...';
+  } else if (randomNumber === 6) {
+    window.open('https://www.pornhub.com/view_video.php?viewkey=64ee8ed3ca0b9'); // Replace with your chosen website link
+    return 'Rolling a number...';
+  } else {
+    return 'Saygex';
+  }
+};
+
 export const lsblk = async (args: string[]): Promise<string> => {
   // Mocked block device information
   const blockDevices = [
@@ -169,6 +183,7 @@ export const lsblk = async (args: string[]): Promise<string> => {
 
   return output;
 };
+
 
 // Banner
 export const banner = (args?: string[]): string => {
